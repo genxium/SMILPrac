@@ -1,0 +1,60 @@
+<html>
+</html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SVG SMIL Animate with Path</title>
+  </head>
+  <body>
+    <svg xmlns="http://www.w3.org/2000/svg" width="1024px" height="1024px">
+			<!-- "M x y" moves the pen to absolute coordinate (x, y) where (0, 0) is the TOP-LEFT point of the browser window, whilst x+ goes towards RIGHT and y+ goes towards DOWN. -->
+
+			<!-- "A rx ry x-axis-rotation large-arc-flag sweep-flag x y" -->
+
+			<!-- <path d="M 230 230
+           		A 45 90, 30, 1, 1, 275 275
+           		"
+							fill="black"
+							id="p1"/> -->
+
+			<!-- Draw the "smaller arc" in the same sweeping direction as the larger arc above -->
+			<!-- <path d="M 230 230
+           		A 45 90, 30, 0, 1, 275 275
+           		"
+							fill="red"
+							id="p2"/> -->
+
+			<!-- Draw the "smaller, compensating arc" in the reverse sweeping direction to the larger arc above, thus making an intact eclipse. -->
+      <!-- As long as "1 == p1.large-arc-flag + p3.large-arc-flag" and "1 == p1.sweep-flag + p3.sweep-flag" hold, the paths p1 and p3 are compensating with respect to an eclipse. -->
+      <!-- <path d="M 230 230
+           		A 45 90, 30, 0, 0, 275 275
+           		"
+							fill="blue"
+							id="p3"/> -->
+
+      <path d="M 230 230
+           		A 45 90, 30, 1, 0, 229.9 229.9
+           		"
+  						fill="transparent"
+  						id="p4"/>
+
+      <path d="M 230 230
+           		A 45 90, 30, 1, 1, 229.9 229.9
+           		"
+  						fill="transparent"
+  						id="p5"/>
+
+			<circle cx="0" cy="50" r="15" fill="blue" stroke="black" stroke-width="1">
+				<animateMotion dur="3s" repeatCount="indefinite">
+					<mpath xlink:href="#p4"/>
+				</animateMotion>
+			</circle>
+
+      <polygon xmlns="http://www.w3.org/2000/svg" id="Star" fill="#FF661F" points="47.5 74.25 18.40463 89.5463412 23.9613512 57.1481706 0.422702443 34.2036588 32.952315 29.4768294 47.5 0 62.047685 29.4768294 94.5772976 34.2036588 71.0386488 57.1481706 76.59537 89.5463412" >
+        <animateMotion dur="3s" repeatCount="indefinite">
+          <mpath xlink:href="#p5"/>
+        </animateMotion>
+      </polygon>
+		</svg>
+  </body>
+</html>
